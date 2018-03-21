@@ -27,7 +27,7 @@ public class HeapPriorityQueue<T> implements PriorityQueue<T> {
      *
      * @param size Size of the queue.
      */
-    HeapPriorityQueue(int size) {
+    public HeapPriorityQueue(int size) {
         storage = new Object[size];
         storage[0] = 0; // empty element at position zero to simplify calculations
         capacity = size;
@@ -35,7 +35,7 @@ public class HeapPriorityQueue<T> implements PriorityQueue<T> {
     }
 
     /**
-     * Returns the head of the queue, which is the first item in the array.
+     * Returns the head of the queue, which is the second item in the array.
      *
      * @return The item with the highest priority.
      * @throws QueueUnderflowException When queue is empty.
@@ -74,6 +74,7 @@ public class HeapPriorityQueue<T> implements PriorityQueue<T> {
      * @param nodeIndex Index of the node that is moved.
      */
     private void bubbleUp(int nodeIndex) {
+        // return when there is only one item in the queue
         if (nodeIndex == 1) {
             return;
         }
@@ -82,6 +83,7 @@ public class HeapPriorityQueue<T> implements PriorityQueue<T> {
         PriorityItem<T> parent = (PriorityItem<T>) storage[parentIndex];
         PriorityItem<T> node = (PriorityItem<T>) storage[nodeIndex];
 
+        // return when parent node is already larger than the child node
         if (parent.getPriority() > node.getPriority()) {
             return;
         }
@@ -131,7 +133,7 @@ public class HeapPriorityQueue<T> implements PriorityQueue<T> {
             return;
         }
 
-        // if node has a right child, check if it is larger than the left child
+        // if node has a right child, check if it has a larger priority than the left child
         if (rightChildIndex <= tailIndex) {
             int leftChildPriority = ((PriorityItem<T>) storage[leftChildIndex]).getPriority();
             int rightChildPriority = ((PriorityItem<T>) storage[rightChildIndex]).getPriority();
@@ -149,6 +151,7 @@ public class HeapPriorityQueue<T> implements PriorityQueue<T> {
             return;
         }
 
+        // swap node with the higher priority child
         swapNodes(nodeIndex, largerChildIndex);
         bubbleDown(largerChildIndex);
     }

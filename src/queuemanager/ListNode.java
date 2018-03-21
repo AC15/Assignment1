@@ -34,10 +34,10 @@ class ListNode<T> {
     /**
      * Changes the pointer to a different node.
      *
-     * @param nextNode New node that this node will point to.
+     * @param next New node that this node will point to.
      */
-    void setNext(ListNode<T> nextNode) {
-        next = nextNode;
+    void setNext(ListNode<T> next) {
+        this.next = next;
     }
 }
 

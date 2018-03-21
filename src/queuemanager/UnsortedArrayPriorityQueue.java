@@ -28,7 +28,7 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
      *
      * @param size Size of the queue.
      */
-    UnsortedArrayPriorityQueue(int size) {
+    public UnsortedArrayPriorityQueue(int size) {
         storage = new Object[size];
         capacity = size;
         tailIndex = -1;
@@ -46,7 +46,7 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
             throw new QueueUnderflowException();
         }
 
-        // highestPriority is set to minimum integer value, because priority can be set to negative values
+        // highestPriority is set to minimum integer value, in case priority is set to a negative value
         int highestPriority = Integer.MIN_VALUE;
         int highestPriorityIndex = 0;
 
@@ -63,7 +63,7 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
     }
 
     /**
-     * Items are added in order of arrival.
+     * Adds item to the queue in order of arrival.
      *
      * @param item Name of the person to be added.
      * @param priority Priority of the person in the queue.
@@ -71,7 +71,7 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
      */
     @Override
     public void add(T item, int priority) throws QueueOverflowException {
-        if (tailIndex >= capacity) {
+        if (tailIndex >= capacity - 1) {
             /* No resizing implemented, but that would be a good enhancement. */
             throw new QueueOverflowException();
         }
@@ -93,12 +93,11 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
             throw new QueueUnderflowException();
         }
 
-        T elementToBeRemoved = head();
-
         for (int i = 0; i <= tailIndex; i++) {
             PriorityItem<T> currentItem = (PriorityItem<T>) storage[i];
 
-            if (elementToBeRemoved == currentItem.getItem()) {
+            // if head is found, remove item and shift items in the array
+            if (head() == currentItem.getItem()) {
                 System.arraycopy(storage, i + 1, storage, i, tailIndex - i);
                 tailIndex--;
                 break;

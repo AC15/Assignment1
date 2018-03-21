@@ -11,7 +11,7 @@ public class SortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
      */
     private ListNode<T> top;
 
-    SortedLinkedPriorityQueue() {
+    public SortedLinkedPriorityQueue() {
         this.top = null;
     }
 
@@ -49,13 +49,15 @@ public class SortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
 
         ListNode<T> currentNode = top;
 
+        // while current node is not the last item in the queue
+        // and current node has larger priority than the node that is being added
         while (currentNode.getNext() != null &&
                 priority < currentNode.getNext().getItem().getPriority()) {
             currentNode = currentNode.getNext();
         }
 
-        ListNode<T> newNode = new ListNode<>(newItem, null);
-        newNode.setNext(currentNode.getNext());
+        // create a new node and add it to the current's node next position
+        ListNode<T> newNode = new ListNode<>(newItem, currentNode.getNext());
         currentNode.setNext(newNode);
     }
 

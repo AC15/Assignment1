@@ -11,7 +11,7 @@ public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
      */
     private ListNode<T> top;
 
-    UnsortedLinkedPriorityQueue() {
+    public UnsortedLinkedPriorityQueue() {
         this.top = null;
     }
 
@@ -30,7 +30,10 @@ public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
         ListNode<T> highestPriorityItem = top;
 
         for (ListNode<T> node = top; node != null; node = node.getNext()) {
-            if (node.getItem().getPriority() > highestPriorityItem.getItem().getPriority()) {
+            int currentNodePriority = node.getItem().getPriority();
+            int highestPriorityItemPriority = highestPriorityItem.getItem().getPriority();
+
+            if (currentNodePriority > highestPriorityItemPriority) {
                 highestPriorityItem = node;
             }
         }
@@ -39,11 +42,10 @@ public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
     }
 
     /**
-     * Ads an item to the front of the queue.
+     * Adds an item to the front of the queue.
      *
      * @param item Item to be added.
      * @param priority Priority of the item in the queue.
-     * @throws QueueOverflowException When queue is too small.
      */
     @Override
     public void add(T item, int priority) {
@@ -64,10 +66,8 @@ public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
             throw new QueueUnderflowException();
         }
 
-        T head = head();
-
-        // If the first node is the head, delete it and return from the function.
-        if (top.getItem().getItem() == head) {
+        // if the first node is the head, delete it and return from the function.
+        if (top.getItem().getItem() == head()) {
             top = top.getNext();
             return;
         }
@@ -75,12 +75,12 @@ public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
         ListNode<T> currentNode = top;
         ListNode<T> previousNode = null;
 
-        while (currentNode != null && currentNode.getItem().getItem() != head) {
+        while (currentNode != null && currentNode.getItem().getItem() != head()) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }
 
-        // Delete the head node
+        // delete the head node
         previousNode.setNext(currentNode.getNext());
     }
 

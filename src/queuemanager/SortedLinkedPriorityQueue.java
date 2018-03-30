@@ -1,9 +1,11 @@
 package queuemanager;
 
 /**
- * Created by AC15 on 16/03/2018
+ * Created by 15009717 on 16/03/2018
  *
  * Implementation of the Sorted Linked List Priority Queue.
+ *
+ * @param <T> The type of things being stored.
  */
 public class SortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
     /**

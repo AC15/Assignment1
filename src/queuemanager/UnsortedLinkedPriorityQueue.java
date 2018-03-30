@@ -1,9 +1,11 @@
 package queuemanager;
 
 /**
- * Created by AC15 on 15/03/2018
+ * Created by 15009717 on 15/03/2018
  *
  * Implementation of the Unsorted Linked List Priority Queue.
+ *
+ * @param <T> The type of things being stored.
  */
 public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
     /**
@@ -66,8 +68,10 @@ public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
             throw new QueueUnderflowException();
         }
 
+        T head = head();
+
         // if the first node is the head, delete it and return from the function.
-        if (top.getItem().getItem() == head()) {
+        if (top.getItem().getItem() == head) {
             top = top.getNext();
             return;
         }
@@ -75,7 +79,7 @@ public class UnsortedLinkedPriorityQueue<T> implements PriorityQueue<T> {
         ListNode<T> currentNode = top;
         ListNode<T> previousNode = null;
 
-        while (currentNode != null && currentNode.getItem().getItem() != head()) {
+        while (currentNode != null && currentNode.getItem().getItem() != head) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }

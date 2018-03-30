@@ -4,6 +4,8 @@ package queuemanager;
  * Created by 15009717 on 13/03/2018
  *
  * Implementation of the Unsorted Array Priority Queue.
+ *
+ * @param <T> The type of things being stored.
  */
 public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
 

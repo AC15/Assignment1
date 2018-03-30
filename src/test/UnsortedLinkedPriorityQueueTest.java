@@ -8,7 +8,9 @@ import queuemanager.UnsortedLinkedPriorityQueue;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by AC15 on 21/03/2018
+ * Created by 15009717 on 21/03/2018
+ *
+ * Test for the Unsorted Linked Priority Queue.
  */
 class UnsortedLinkedPriorityQueueTest extends PriorityQueueTest {
 

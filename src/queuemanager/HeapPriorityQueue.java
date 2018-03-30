@@ -1,9 +1,11 @@
 package queuemanager;
 
 /**
- * Created by AC15 on 16/03/2018
+ * Created by 15009717 on 16/03/2018
  *
  * Implementation of the heap.
+ *
+ * @param <T> The type of things being stored.
  */
 public class HeapPriorityQueue<T> implements PriorityQueue<T> {
     /**

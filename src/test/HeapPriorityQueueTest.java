@@ -9,7 +9,9 @@ import queuemanager.QueueUnderflowException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by AC15 on 21/03/2018
+ * Created by 15009717 on 21/03/2018
+ *
+ * Test for the Heap Priority Queue.
  */
 class HeapPriorityQueueTest extends PriorityQueueTest {
 
